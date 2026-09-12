@@ -1,4 +1,4 @@
-# 🏀 NBA MVP Predictive Exploratory Data Analysis (2023–24)
+# 🏀 NBA MVP Predictive Exploratory Data Analysis (2025-26)
 
 **Author:** Isar Joshi  
 **Course:** DTSC 2301: Data Science Principles  
@@ -27,8 +27,8 @@
 | **`GP`** | Availability | Total regular-season appearances |
 
 * **Data Source & Attribution:** Extracted directly via Python using the `nba_api` library querying official statistical endpoints from `stats.nba.com`.
-* **Unit of Analysis & Features:** Each row represents an individual NBA player's aggregated statistics for the 2023–24 regular season. Key features include player identifiers (`PLAYER_NAME`, `TEAM_ABBREVIATION`), games/minutes played (`GP`, `MIN`), counting statistics (`PTS`, `REB`, `AST`, `STL`, `BLK`), shooting efficiency (`FG_PCT`), and cumulative team impact (`PLUS_MINUS`).
-* **Dataset Size & Assumptions:** The raw API pull contains 572 player records. After applying the official 65-game eligibility filter, the dataset consists of qualified candidate records. We assume the API data correctly reflects official NBA box score tracking.
+* **Unit of Analysis & Features:** Each row represents an individual NBA player's aggregated statistics for the 2025-26 regular season. Key features include player identifiers (`PLAYER_NAME`, `TEAM_ABBREVIATION`), games/minutes played (`GP`, `MIN`), counting statistics (`PTS`, `REB`, `AST`, `STL`, `BLK`), shooting efficiency (`FG_PCT`), and cumulative team impact (`PLUS_MINUS`).
+* **Dataset Size & Assumptions:** The raw API pull contains 572 player records. After applying the official 65-game eligibility filter, the dataset only consists of qualified candidate records. We assume the API data correctly reflects official NBA box score tracking.
 
 ---
 
@@ -40,9 +40,9 @@
 import pandas as pd
 from nba_api.stats.endpoints import leaguedashplayerstats
 
-# 1. Fetch live 2023-24 regular season stats via NBA API
+# 1. Fetch live 2025-26 regular season stats via NBA API
 api_call = leaguedashplayerstats.LeagueDashPlayerStats(
-    season='2023-24',
+    season='2025-26',
     season_type_all_star='Regular Season'
 )
 df_raw = api_call.get_data_frames()[0]
