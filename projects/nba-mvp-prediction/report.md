@@ -54,16 +54,6 @@
 
 * **Insights:** This scatter plot contrasts playmaking (`AST_PG`) with scoring (`PTS_PG`), sized and colored by overall team plus/minus. It illustrates distinct candidate archetypes: primary ball-dominant creators (high `PTS`, high `AST`) vs. primary off-ball scorers.
 
-### Visualization 4: Scoring Distribution Across Top Teams
-![Scoring Distribution Across Top Teams](visualisations/team_scoring_boxplot.png)
-
-* **Insights:** A boxplot and scatter overlay mapping player scoring output across top teams. The plot highlights how individual candidates carry disproportionate scoring loads relative to their team medians, illustrating candidate usage rates and offensive reliance.
-
-### Visualization 5: Predictor Variable Correlation Heatmap
-![Predictor Variable Correlation Heatmap](visualisations/heatmap.png)
-
-* **Insights:** A correlation matrix measuring linear relationships across key MVP features. Points per game shows a strong positive correlation with net plus/minus, whereas games played (`GP`) exhibits minimal correlation with rate stats within the qualified 65+ GP subset, proving availability alone does not dictate production quality.
-
 ---
 
 ## 5. Storytelling and Narrative
