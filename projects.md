@@ -9,5 +9,5 @@ An  analysis examining candidate performance metrics, team impact, and official 
 
 * **Modules Used:** Python, Pandas, Seaborn, Matplotlib, `nba_api`
 * **Full Report:** [NBA MVP Analysis](projects/nba-mvp-prediction/report.md)
-* **Code Repository:** [GitHub Folder](projects/nba-mvp-prediction/)
+* **Code Repository:** [GitHub Folder](projects/nba-mvp-prediction/DTSC%20Project.ipynb)
 
