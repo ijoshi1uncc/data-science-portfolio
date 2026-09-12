@@ -9,6 +9,6 @@ This website will document my learning and projects throughout the semester.
 - [Blog](blog.md)
 - [Projects](projects.md)
 - [LinkedIn Profile](https://www.linkedin.com/in/isar-joshi-357a97435/)
-- [Download Resume (PDF)]([./Professional_Resume.pdf])
+- [Download Resume (PDF)](./Professional_Resume.pdf)
 - 
   
