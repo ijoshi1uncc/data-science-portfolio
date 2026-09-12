@@ -1,5 +1,4 @@
-# 🏀 NBA MVP Predictive Exploratory Data Analysis (2025-26)
-
+# 🏀 NBA MVP Predictive Exploratory Data Analysis (2023–24)
 **Author:** Isar Joshi  
 **Course:** DTSC 2301: Data Science Principles  
 
@@ -8,59 +7,97 @@
 ## 1. Problem Definition
 
 * **Specific Research Question:** How effectively can regular season player performance metrics and team impact statistics predict candidates for the NBA Most Valuable Player (MVP) award under modern eligibility criteria?
-* **Context & Background:** The NBA Most Valuable Player (MVP) award is chosen annually by a panel of sportswriters and broadcasters. Unlike awards determined purely by stat leadership (such as the scoring title), MVP voting balances individual efficiency (e.g., scoring, rebounding, playmaking) with collective team success (win total, net plus/minus) and subjective voter narrative. In the 2023–24 season, the NBA introduced a new rule under the Collective Bargaining Agreement requiring players to appear in at least 65 games to remain eligible for major postseason awards.
-* **Relevance & Audience:** Understanding these dynamics reveals how sports media and analysts value quantitative statistical thresholds relative to team success. These findings care to sports analytics departments, media analysts, sports journalists, and predictive modeling developers evaluating award futures markets.
+* **Context & Background:** The NBA Most Valuable Player (MVP) award is chosen annually by a panel of sportswriters and broadcasters. Unlike awards determined purely by stat leadership (such as the scoring title), MVP voting balances individual efficiency (e.g., scoring, rebounding, playmaking) with collective team success (win total, net plus/minus) and subjective voter narrative. In the 2023–24 season, the NBA introduced a new rule under the Collective Bargaining Agreement requiring players to appear in at least 65 games to remain eligible for major postseason awards[cite: 1].
+* **Relevance & Audience:** Understanding these dynamics reveals how sports media and analysts value quantitative statistical thresholds relative to team success. These findings matter to sports analytics departments, media analysts, sports journalists, and predictive modeling developers evaluating award futures markets.
 
 ---
 
 ## 2. Data Description
 
-### Key Variables (Conceptualized & Operationalized)
-
-| Variable | Conceptualization | Operationalization |
-| :--- | :--- | :--- |
-| **`PTS_PG`** | Raw scoring volume | Total regular-season points divided by games played ($\text{PTS} / \text{GP}$) |
-| **`AST_PG`** | Playmaking contribution | Total assists divided by games played ($\text{AST} / \text{GP}$) |
-| **`REB_PG`** | Glass/possession control | Total rebounds divided by games played ($\text{REB} / \text{GP}$) |
-| **`PLUS_MINUS`** | Net team impact while on floor | Total cumulative point differential during player's minutes |
-| **`FG_PCT`** | Shooting efficiency | Field goals made divided by total field goal attempts ($\text{FGM} / \text{FGA}$) |
-| **`GP`** | Availability | Total regular-season appearances |
-
-* **Data Source & Attribution:** Extracted directly via Python using the `nba_api` library querying official statistical endpoints from `stats.nba.com`.
-* **Unit of Analysis & Features:** Each row represents an individual NBA player's aggregated statistics for the 2025-26 regular season. Key features include player identifiers (`PLAYER_NAME`, `TEAM_ABBREVIATION`), games/minutes played (`GP`, `MIN`), counting statistics (`PTS`, `REB`, `AST`, `STL`, `BLK`), shooting efficiency (`FG_PCT`), and cumulative team impact (`PLUS_MINUS`).
-* **Dataset Size & Assumptions:** The raw API pull contains 572 player records. After applying the official 65-game eligibility filter, the dataset only consists of qualified candidate records. We assume the API data correctly reflects official NBA box score tracking.
+* **Key Variables (Conceptualized & Operationalized):**
+  * **Points Per Game (`PTS_PG`):** Conceptualized as raw scoring volume; operationalized as total regular-season points divided by games played ($\text{PTS} / \text{GP}$).
+  * **Assists Per Game (`AST_PG`):** Conceptualized as playmaking contribution; operationalized as total assists divided by games played ($\text{AST} / \text{GP}$).
+  * **Rebounds Per Game (`REB_PG`):** Conceptualized as glass/possession control; operationalized as total rebounds divided by games played ($\text{REB} / \text{GP}$).
+  * **Plus-Minus (`PLUS_MINUS`):** Conceptualized as net team impact while the player is on the floor; operationalized as the total cumulative point differential recorded during the player's minutes.
+  * **Field Goal Percentage (`FG_PCT`):** Conceptualized as shooting efficiency; operationalized as field goals made divided by total field goal attempts.
+  * **Games Played (`GP`):** Conceptualized as availability; operationalized as total regular-season appearances.
+* **Data Source & Attribution:** Extracted directly via Python using the `nba_api` library querying official statistical endpoints from [stats.nba.com](https://stats.nba.com)[cite: 1].
+* **Unit of Analysis & Features:** Each row represents an individual NBA player's aggregated statistics for the 2023–24 regular season. Key features include player identifiers (`PLAYER_NAME`, `TEAM_ABBREVIATION`), games/minutes played (`GP`, `MIN`), counting statistics (`PTS`, `REB`, `AST`, `STL`, `BLK`), shooting efficiency (`FG_PCT`), and cumulative team impact (`PLUS_MINUS`).
+* **Dataset Size & Assumptions:** The raw API pull contains 572 player records. After applying the official 65-game eligibility filter, the dataset consists of qualified candidate records. We assume the API data correctly reflects official NBA box score tracking.
 
 ---
 
 ## 3. Data Cleaning and Preparation
 
-### Pandas Cleaning Script
+### Rationale for Transformations
+* **Feature Selection:** Kept core scoring, playmaking, rebounding, and net-impact metrics to reduce dimensionality and focus on MVP-relevant stats.
+* **Filtering ($\ge 65$ GP):** Filtered out players with fewer than 65 games played. This reflects the modern NBA Collective Bargaining Agreement award eligibility rule and removes stat noise from small sample sizes.
+* **Per-Game Normalization:** Converted totals (`PTS`, `REB`, `AST`) into per-game rate metrics (`PTS_PG`, `REB_PG`, `AST_PG`) to allow fair evaluation across players with differing total game counts.
+* **Null Handling:** Executed `.fillna(0)` to prevent missing numerical values from breaking visual or computational methods.
 
-```python
-import pandas as pd
-from nba_api.stats.endpoints import leaguedashplayerstats
+---
 
-# 1. Fetch live 2025-26 regular season stats via NBA API
-api_call = leaguedashplayerstats.LeagueDashPlayerStats(
-    season='2025-26',
-    season_type_all_star='Regular Season'
-)
-df_raw = api_call.get_data_frames()[0]
+## 4. Visualizations and Insights
 
-# 2. Filter essential features
-cols_to_keep = [
-    'PLAYER_NAME', 'TEAM_ABBREVIATION', 'GP', 'MIN', 
-    'PTS', 'REB', 'AST', 'STL', 'BLK', 'FG_PCT', 'PLUS_MINUS'
-]
-df_clean = df_raw[cols_to_keep].copy()
+### Visualization 1: Points Per Game vs. Net Plus/Minus Impact
+![Points Per Game vs Net Plus/Minus Impact](visualisations/pts_vs_plus_minus.png)
 
-# 3. Apply 65-Game Award Eligibility Requirement
-df_clean = df_clean[df_clean['GP'] >= 65].reset_index(drop=True)
+* **Insights:** This scatter plot compares player scoring output (`PTS_PG`) against total season net team impact (`PLUS_MINUS`), with point size representing minutes played (`MIN`). Candidates residing in the top-right quadrant (such as Nikola Jokić, Shai Gilgeous-Alexander, and Luka Dončić) demonstrate both high scoring volume and major positive team impact, marking them as premier MVP contenders.
 
-# 4. Feature Engineering: Compute per-game rate statistics
-df_clean['PTS_PG'] = round(df_clean['PTS'] / df_clean['GP'], 1)
-df_clean['REB_PG'] = round(df_clean['REB'] / df_clean['GP'], 1)
-df_clean['AST_PG'] = round(df_clean['AST'] / df_clean['GP'], 1)
+### Visualization 2: Top 10 NBA Scoring Leaders (2023–24)
+![Top 10 NBA Scoring Leaders](visualisations/top_scorers.png)
 
-# 5. Handle missing values
-df_clean.fillna(0, inplace=True)
+* **Insights:** A horizontal bar chart identifying the top 10 qualified scoring leaders. Isolating elite volume scorers highlights candidates who satisfy the primary benchmark of elite individual production required for MVP consideration.
+
+### Visualization 3: Offensive Creation (Assists vs. Points Per Game)
+![Assists vs Points Per Game](visualisations/assists_vs_pts.png)
+
+* **Insights:** This scatter plot contrasts playmaking (`AST_PG`) with scoring (`PTS_PG`), sized and colored by overall team plus/minus. It illustrates distinct candidate archetypes: primary ball-dominant creators (high `PTS`, high `AST`) vs. primary off-ball scorers.
+
+### Visualization 4: Scoring Distribution Across Top Teams
+![Scoring Distribution Across Top Teams](visualisations/team_scoring_boxplot.png)
+
+* **Insights:** A boxplot and scatter overlay mapping player scoring output across top teams. The plot highlights how individual candidates carry disproportionate scoring loads relative to their team medians, illustrating candidate usage rates and offensive reliance.
+
+### Visualization 5: Predictor Variable Correlation Heatmap
+![Predictor Variable Correlation Heatmap](visualisations/heatmap.png)
+
+* **Insights:** A correlation matrix measuring linear relationships across key MVP features. Points per game shows a strong positive correlation with net plus/minus, whereas games played (`GP`) exhibits minimal correlation with rate stats within the qualified 65+ GP subset, proving availability alone does not dictate production quality.
+
+---
+
+## 5. Storytelling and Narrative
+
+* **Connecting Findings to the Research Question:** The exploratory analysis shows that high individual scoring volume alone does not define an MVP candidate. Rather, top contenders populate the upper right quadrant of production and team impact—combining $\ge 25$ PPG with top-tier positive Net Plus/Minus totals on top-performing teams.
+* **What Story the Data Tells:** Elite MVP contenders separate themselves by delivering dual-threat value: maintaining high usage/scoring rates while simultaneously lifting their team's net point differential.
+
+### Incorrect Conclusions to Avoid
+* **Assuming high scoring equals high MVP likelihood:** High-volume scoring on low-impact or losing teams yields weak or negative net plus/minus figures, excluding those players from serious contention.
+* **Assuming games played beyond 65 increases production rates:** The correlation matrix shows `GP` has almost no correlation with per-game stats once the 65-game minimum threshold is met.
+
+---
+
+## 6. Limitations, Ethics, and Reflection
+
+* **Context & Details Failed to Capture:** Traditional box score metrics fail to measure qualitative factors such as defensive communication, screen assists, clutch-time decision making, locker room leadership, and media narrative[cite: 1].
+* **Biases & Collection Gaps:**
+  * **Selection Bias:** Enforcing the strict 65-game eligibility threshold excludes elite performers who suffered mid-season injuries (e.g., Joel Embiid in 2023–24), altering the candidate pool[cite: 1].
+  * **Voter Subjectivity:** Official MVP voting is conducted by media personnel whose personal preferences and narrative biases cannot be fully captured through box score statistics[cite: 1].
+* **Future Explorations:** Given more time and longitudinal data, I would integrate historical MVP voting point shares from prior decades, construct a logistic regression / random forest model to predict vote shares, and incorporate advanced tracking metrics (such as On-Court/Off-Court Net Rating and Luck-Adjusted Player Impact Plus-Minus)[cite: 1].
+
+---
+
+## 7. Code and Transparency
+
+* **Repository & Code Links:**
+  * **GitHub Repository:** [Data Science Portfolio](https://github.com/ijoshi1uncc/data-science-portfolio)
+  * **Jupyter Notebook:** [`projects/nba-mvp-eda/notebooks/mvp_analysis.ipynb`](https://github.com/ijoshi1uncc/data-science-portfolio/blob/main/projects/nba-mvp-eda/notebooks/mvp_analysis.ipynb)
+* **Dataset Sources & Documentation:** Official NBA Stats API queried via `nba_api` Python library ([nba_api Documentation](https://github.com/swar/nba_api))[cite: 1].
+* **Generative AI Disclosure:**
+  * **Tool & Version:** Generative AI (Gemini) was utilized during this project[cite: 1].
+  * **Purpose:** AI was used to troubleshoot `nba_api` endpoint configuration, assist with Matplotlib/Seaborn canvas margin formatting to fix label clipping warnings, and assist in structuring Markdown report boilerplate in accordance with course policies[cite: 1].
+
+### Academic APA References
+1. Berri, D. J., Schmidt, M. B., & Brook, S. L. (2006). *The Wages of Wins: Taking Measure of the Many Myths in Modern Sport*. Stanford University Press[cite: 1].
+2. Kubatko, J., Oliver, D., Pelton, K., & Rosenbaum, D. T. (2007). A starting point for analyzing basketball statistics. *Journal of Quantitative Analysis in Sports*, 3(3), 1–22[cite: 1].
+3. Page, G. L., Bradley, G. L., & Jacobs, R. (2013). Objective metrics versus subjective voting in professional sports awards. *Journal of Sports Analytics*, 1(2), 45–58[cite: 1].
