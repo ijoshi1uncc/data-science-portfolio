@@ -4,7 +4,7 @@ Below are my featured analytical projects.
 
 ---
 
-## 🏀 NBA MVP Predictive Analysis (2023–24)
+## 🏀 NBA MVP Predictive Analysis (2025-2026)
 An  analysis examining candidate performance metrics, team impact, and official award eligibility thresholds (65+ GP minimum).
 
 * **Modules Used:** Python, Pandas, Seaborn, Matplotlib, `nba_api`
