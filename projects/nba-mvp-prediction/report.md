@@ -40,17 +40,17 @@
 ## 4. Visualizations and Insights
 
 ### Visualization 1: Points Per Game vs. Net Plus/Minus Impact
-![Points Per Game vs Net Plus/Minus Impact](projects/nba-mvp-prediction/DTSCRep1.png)
+![Points Per Game vs Net Plus/Minus Impact](DTSCRep1.png)
 
 * **Insights:** This scatter plot compares player scoring output (`PTS_PG`) against total season net team impact (`PLUS_MINUS`), with point size representing minutes played (`MIN`). Candidates residing in the top-right quadrant (such as Nikola Jokić, Shai Gilgeous-Alexander, and Luka Dončić) demonstrate both high scoring volume and major positive team impact, marking them as premier MVP contenders.
 
 ### Visualization 2: Top 10 NBA Scoring Leaders (2025–26)
-![Top 10 NBA Scoring Leaders](projects/nba-mvp-prediction/DTSCRep2.png)
+![Top 10 NBA Scoring Leaders](DTSCRep2.png)
 
 * **Insights:** A horizontal bar chart identifying the top 10 qualified scoring leaders. Isolating elite volume scorers highlights candidates who satisfy the primary benchmark of elite individual production required for MVP consideration.
 
 ### Visualization 3: Offensive Creation (Assists vs. Points Per Game)
-![Assists vs Points Per Game](projects/nba-mvp-prediction/DTSCRep3.png)
+![Assists vs Points Per Game](DTSCRep3.png)
 
 * **Insights:** This scatter plot contrasts playmaking (`AST_PG`) with scoring (`PTS_PG`), sized and colored by overall team plus/minus. It illustrates distinct candidate archetypes: primary ball-dominant creators (high `PTS`, high `AST`) vs. primary off-ball scorers.
 
