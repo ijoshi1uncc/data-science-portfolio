@@ -29,7 +29,8 @@
 
 ### Rationale for Transformations
 * **Feature Selection:** Kept core scoring, playmaking, rebounding, and net-impact metrics to reduce dimensionality and focus on MVP-relevant stats.
-* **Filtering ($\ge 65$ GP):** Filtered out players with fewer than 65 games played. This reflects the modern NBA Collective Bargaining Agreement award eligibility rule and removes stat noise from small sample sizes.
+> [!NOTE]
+> Filtered dataset to 65+ games played to align with the NBA eligibility threshold.
 * **Per-Game Normalization:** Converted totals (`PTS`, `REB`, `AST`) into per-game rate metrics (`PTS_PG`, `REB_PG`, `AST_PG`) to allow fair evaluation across players with differing total game counts.
 * **Null Handling:** Executed `.fillna(0)` to prevent missing numerical values from breaking visual or computational methods.
 
@@ -57,8 +58,8 @@
 * **Connecting Findings to the Research Question:** The exploratory analysis shows that high individual scoring volume alone does not define an MVP candidate. Rather, top contenders populate the upper right quadrant of production and team impact—combining $\ge 25$ PPG with top-tier positive Net Plus/Minus totals on top-performing teams.
 * **What Story the Data Tells:** Elite MVP contenders separate themselves by delivering dual-threat value: maintaining high usage/scoring rates while simultaneously lifting their team's net point differential.
 
-### Incorrect Conclusion to Avoid
-* **Assuming high scoring equals high MVP likelihood:** High-volume scoring on low-impact or losing teams yields weak or negative net plus/minus figures, excluding those players from serious contention.
+> [!WARNING]
+> High scoring output does not directly imply high net plus/minus without strong team context.
 
 
 ## 6. Limitations, Ethics, and Reflection
