@@ -1,4 +1,4 @@
-# 🏀 NBA MVP Predictive Exploratory Data Analysis (2025-26)
+# NBA MVP Predictive Data Analysis (2025-26)
 **Author:** Isar Joshi  
 **Course:** DTSC 2301: Modeling and Society  
 
