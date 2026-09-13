@@ -10,7 +10,6 @@
 * **Context & Background:** The NBA Most Valuable Player (MVP) award is chosen annually by a panel of sportswriters and broadcasters. Unlike awards determined purely by stat leadership (such as the scoring title), MVP voting balances individual efficiency (e.g., scoring, rebounding, playmaking) with collective team success (win total, net plus/minus) and subjective voter narrative. In the 2023–24 season, the NBA introduced a new rule under the Collective Bargaining Agreement requiring players to appear in at least 65 games to remain eligible for major postseason awards.
 * **Relevance & Audience:** Understanding these dynamics reveals how sports media and analysts value quantitative statistical thresholds relative to team success. These findings matter to sports analytics departments, media analysts, sports journalists, and predictive modeling developers evaluating award futures markets.
 
----
 
 ## 2. Data Description
 
@@ -25,7 +24,6 @@
 * **Unit of Analysis & Features:** Each row represents an individual NBA player's aggregated statistics for the 2025-26 regular season. Key features include player identifiers (`PLAYER_NAME`, `TEAM_ABBREVIATION`), games/minutes played (`GP`, `MIN`), counting statistics (`PTS`, `REB`, `AST`, `STL`, `BLK`), shooting efficiency (`FG_PCT`), and cumulative team impact (`PLUS_MINUS`).
 * **Dataset Size & Assumptions:** The raw API pull contains 572 player records. After applying the official 65-game eligibility filter, the dataset consists of qualified candidate records. We assume the API data correctly reflects official NBA box score tracking.
 
----
 
 ## 3. Data Cleaning and Preparation
 
@@ -35,7 +33,6 @@
 * **Per-Game Normalization:** Converted totals (`PTS`, `REB`, `AST`) into per-game rate metrics (`PTS_PG`, `REB_PG`, `AST_PG`) to allow fair evaluation across players with differing total game counts.
 * **Null Handling:** Executed `.fillna(0)` to prevent missing numerical values from breaking visual or computational methods.
 
----
 
 ## 4. Visualizations and Insights
 
@@ -54,7 +51,6 @@
 
 * **Insights:** This scatter plot contrasts playmaking (`AST_PG`) with scoring (`PTS_PG`), sized and colored by overall team plus/minus. It illustrates distinct candidate archetypes: primary ball-dominant creators (high `PTS`, high `AST`) vs. primary off-ball scorers.
 
----
 
 ## 5. Storytelling and Narrative
 
@@ -64,7 +60,6 @@
 ### Incorrect Conclusion to Avoid
 * **Assuming high scoring equals high MVP likelihood:** High-volume scoring on low-impact or losing teams yields weak or negative net plus/minus figures, excluding those players from serious contention.
 
----
 
 ## 6. Limitations, Ethics, and Reflection
 
