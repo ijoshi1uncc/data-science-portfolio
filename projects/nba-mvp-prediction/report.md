@@ -7,6 +7,8 @@
 ![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
+> [!NOTE]
+> All raw statistical endpoints were pulled dynamically via the official `nba_api` Python wrapper.
 ---
 
 ## 1. Problem Definition
