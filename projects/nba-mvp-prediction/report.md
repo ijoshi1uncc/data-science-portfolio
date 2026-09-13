@@ -1,6 +1,6 @@
 # 🏀 NBA MVP Predictive Exploratory Data Analysis (2025-26)
 **Author:** Isar Joshi  
-**Course:** DTSC 2301: Data Science Principles  
+**Course:** DTSC 2301: Modeling and Society  
 
 ---
 
