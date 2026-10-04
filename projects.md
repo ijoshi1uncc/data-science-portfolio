@@ -15,7 +15,7 @@ An  analysis examining candidate performance metrics, team impact, and official 
 An  analysis examining candidate performance metrics, team impact, and official award eligibility thresholds (65+ GP minimum).
 
 * **Modules Used:** Python, Pandas, Seaborn, Matplotlib, `nba_api`
-* **Full Report:** [NBA MVP Analysis](projects/nba-mvp-prediction/report.md)
+* **Full Report:** [NBA AllStar Analysis](projects/nba_allstar_prediction/report.md)
 * **Code Repository:** [GitHub Folder](projects/nba-mvp-prediction/DTSC%20Project.ipynb)
 
 
