@@ -131,5 +131,5 @@
 
 ---
 
- **Code Repository:** [GitHub Folder](projects/nba_allstar_prediction/DTSC%20Project%20Phase%202.ipynb)
+ **Code Repository:** [GitHub Folder](DTSC%20Project%20Phase%202.ipynb)
  **AI Disclosure:** Generative AI (Gemini) was utilized for code optimization, statistical evaluation formatting, and markdown structuring in compliance with course guidelines.
