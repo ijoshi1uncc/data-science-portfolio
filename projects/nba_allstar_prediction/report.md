@@ -97,7 +97,7 @@
 
 ## 8. Model Interpretation and Insights
 
-![ConfusionAndImportance](projects/nba_allstar_prediction/DTSCProject2Img1.png)
+![ConfusionAndImportance](DTSCProject2Img1.png)
 * **Feature Importance Insights:**
   * Primary predictive drivers were lagged fantasy points per game (`FP_PG_LAG1`) and lagged points per game (`PTS_PG_LAG1`), followed by team wins (`W_LAG1`) and plus-minus (`PLUS_MINUS_LAG1`).
 * **Error Analysis (Confusion Matrix Breakdown):**
