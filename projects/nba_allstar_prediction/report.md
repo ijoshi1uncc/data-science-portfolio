@@ -10,7 +10,8 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-
+> [!NOTE]
+> All raw statistical endpoints were pulled dynamically via the official `nba_api` Python wrapper.
 
 ---
 
