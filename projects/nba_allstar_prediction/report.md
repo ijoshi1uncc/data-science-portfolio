@@ -1,7 +1,15 @@
 # Predicting NBA All-Star Eligibility using Historical Performance and Machine Learning
 
 **Author:** Isar Joshi  
-**Major:** Data Science, UNC Charlotte  
+**Course:** DTSC 2301: Modeling and Society  
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
+
 
 ---
 
@@ -44,7 +52,8 @@
 * **Target Variable Distribution & Class Imbalance:**
   * **Class 0 (Non-All-Star):** 449 instances (~91.4%) in the evaluation split.
   * **Class 1 (All-Star Candidate):** 42 instances (~8.6%) in the evaluation split.
-  * **Imbalance Analysis:** Severe class imbalance present (~91:9 ratio), requiring specialized handling during modeling (e.g., balanced class weights, ROC-AUC and F1-Score evaluation).
+> [!WARNING]
+> **Severe Class Imbalance:** The target variable (`ALL_STAR_CANDIDATE`) represents ~8.6% of the dataset. Accuracy is not an appropriate metric for model selection; models are evaluated primarily on **ROC-AUC** and **Class 1 F1-Score**.
 * **Exploratory Insights & Visualizations:**
   * Linear correlation matrix reveals strong co-linearity between fantasy points per game (`FP_PG`), scoring per game (`PTS_PG`), and triple-doubles (`TD3`).
   * Scatter plots demonstrate a clear non-linear threshold in `FP_PG` above which probability of elite candidacy increases exponentially.
