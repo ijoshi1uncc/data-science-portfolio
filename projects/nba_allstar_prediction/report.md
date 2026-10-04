@@ -117,3 +117,6 @@
   * **False Negatives:** Undervaluing emerging talent due to previous low-usage roles.
 * **Real-World Application:** Suitable as a quantitative preliminary screening tool for talent evaluation, but should be paired with qualitative scouting, medical evaluations, and tactical context.
 * **Future Work:** Incorporate spatial tracking data, usage rate percentage (`USG%`), true shooting percentage (`TS%`), and player age/trajectory curves.
+
+* **Code Repository:** [GitHub Folder](projects/nba_allstar_prediction/DTSC%20Project%20Phase%202.ipynb)
+* **AI Disclosure:** Generative AI (Gemini) was utilized for code optimization, statistical evaluation formatting, and markdown structuring in compliance with course guidelines.
